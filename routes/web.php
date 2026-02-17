@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\FirstController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RController;
@@ -45,3 +46,6 @@ Route::resource("item",RController::class)
 Route::apiResource('item2',APIController::class);
 
 Route::get('invoke', InvokeController::class);
+
+
+Route::get("data",[DataController::class,'index']);
