@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\FirstController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RController;
+use App\Http\Controllers\APIController;
+use App\Http\Controllers\InvokeController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,10 +33,15 @@ Route::get("route-1-duplicate",'App\Http\Controllers\FirstController@index');
 Route::get('route-2-duplicate',[
     'uses'=> 'App\Http\Controllers\FirstController@index'
 ]);
-
-
-
-
-
 Route::post('route-15',[FirstController::class,'index']);
 Route::put('route-16',[FirstController::class,'index']);
+
+
+Route::resource("item",RController::class)
+//->only(['index','create'])
+->except(["store",'update'])
+;
+
+Route::apiResource('item2',APIController::class);
+
+Route::get('invoke', InvokeController::class);
