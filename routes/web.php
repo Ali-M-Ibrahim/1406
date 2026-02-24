@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\InvokeController;
+use App\Http\Controllers\ItemController;
 
 
 Route::get('/', function () {
@@ -49,3 +50,34 @@ Route::get('invoke', InvokeController::class);
 
 
 Route::get("data",[DataController::class,'index']);
+
+
+Route::get('create1',[ItemController::class,'create1']);
+Route::get('create2',[ItemController::class,'create2']);
+Route::get('create3',[ItemController::class,'create3']);
+Route::post('create4',[ItemController::class,'create4']);
+Route::post('create5',[ItemController::class,'create5']);
+Route::get('getById/{id}',[ItemController::class,'getById']);
+Route::get('getAll',[ItemController::class,'getAll']);
+Route::get('getByCondition',[ItemController::class,'getByCondition']);
+Route::get('getByConditionOr',[ItemController::class,'getByConditionOr']);
+Route::get('getWhereIn',[ItemController::class,'getWhereIn']);
+Route::get('getBetween',[ItemController::class,'getBetween']);
+Route::get('getItemsOrderBy',[ItemController::class,'getItemsOrderBy']);
+Route::get('getJoin',[ItemController::class,'getJoin']);
+Route::get('getFields',[ItemController::class,'getFields']);
+Route::get('update1',[ItemController::class,'update1']);
+Route::put('update2',[ItemController::class,'update2']);
+Route::get('updateOrCreate',[ItemController::class,'updateOrCreate']);
+Route::get('delete',[ItemController::class,'delete']);
+
+Route::get('statistics',[ItemController::class,'statistics']);
+Route::get('massUpdate',[ItemController::class,'massUpdate']);
+
+
+
+
+
+
+
+
