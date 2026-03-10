@@ -8,6 +8,7 @@ use App\Http\Controllers\APIController;
 use App\Http\Controllers\InvokeController;
 use App\Http\Controllers\ItemController;
 
+use App\Http\Controllers\ViewController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -74,6 +75,9 @@ Route::get('delete',[ItemController::class,'delete']);
 Route::get('statistics',[ItemController::class,'statistics']);
 Route::get('massUpdate',[ItemController::class,'massUpdate']);
 
+Route::get('page1',[ViewController::class,'page1']);
+Route::get('list-item',[ViewController::class,'index'])->name('list-item');
+Route::get('view-item/{id}',[ViewController::class,'view'])->name('viewItem');
 
 
 
