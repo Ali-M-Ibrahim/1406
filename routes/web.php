@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\FirstController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RController;
 use App\Http\Controllers\APIController;
@@ -79,9 +81,15 @@ Route::get('page1',[ViewController::class,'page1']);
 Route::get('list-item',[ViewController::class,'index'])->name('list-item');
 Route::get('view-item/{id}',[ViewController::class,'view'])->name('viewItem');
 
+Route::get('list-product',[ProductController::class,'list'])->name('listProduct');
+Route::get('create-product',[ProductController::class,'create'])->name('createProduct');
+Route::post('save-product',[ProductController::class,'save'])->name('saveProduct');
+Route::get('view-product/{id}',[ProductController::class,'details'])->name('viewProduct');
+Route::get('edit-product/{id}',[ProductController::class,'edit'])->name('editProduct');
+Route::put('update-product/{id}',[ProductController::class,'update'])->name('updateProduct');
+Route::delete('delete-product/{id}',[ProductController::class,'delete'])->name('deleteProduct');
+Route::get('delete-product2/{id}',[ProductController::class,'delete'])->name('deleteProduct2');
 
 
-
-
-
-
+Route::resource('category',CategoryController::class);
+Route::get('delete-category/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
