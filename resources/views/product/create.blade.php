@@ -57,16 +57,30 @@
 <form action="{{route('saveProduct')}}" method="post" >
     @csrf
     <label for="name">Name</label>
-    <input required type="text" id="name" name="body_name" placeholder="Product name..">
-
+    <input  type="text" id="name" name="body_name" placeholder="Product name..">
+    @error('body_name')
+    <span>{{$message}}</span>
+    @enderror
     <label for="description">Description</label>
-    <textarea required type="text" id="description" name="body_description" placeholder="Product Description.."></textarea>
-
+    <textarea  type="text" id="description" name="body_description" placeholder="Product Description.."></textarea>
+    @error('body_description')
+    <span>{{$message}}</span>
+    @enderror
     <label for="price">Price</label>
-    <input required type="number" id="price" name="body_price" placeholder="Product Price" />
+    <input  type="number" id="price" name="body_price" placeholder="Product Price" />
+    @error('body_price')
+    <span>{{$message}}</span>
+    @enderror
 
+    <label for="body_price_confirmation">Confirm Price</label>
+{{--    <input  type="number" id="price2" name="body_price2" placeholder="Product Price confirmation" />--}}
+        <input  type="number" id="price2" name="body_price_confirmation" placeholder="Product Price confirmation" />
+
+    @error('body_price_confirmation')
+    <span>{{$message}}</span>
+    @enderror
     <label for="category">Category</label>
-    <select required id="category" name="body_category">
+    <select  id="category" name="body_category">
         @foreach($categories as $category)
             <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
@@ -76,6 +90,17 @@
 
     <a class="cancel" href="{{route('listProduct')}}">Cancel</a>
 </form>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
 </body>
 </html>

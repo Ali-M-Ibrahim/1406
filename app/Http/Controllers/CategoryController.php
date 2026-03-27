@@ -29,6 +29,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           'name' => 'required|unique:categories'
+        ],
+        [
+//            'name.required' => 'Category name is required.',
+            'required' => "Please fill the :attribute field"
+        ]);
         Category::create($request->all());
         return redirect()->route('category.index');
     }

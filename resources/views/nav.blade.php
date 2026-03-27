@@ -3,4 +3,5 @@
     <li><a href="news.asp">News</a></li>
     <li><a href="contact.asp">Contact</a></li>
     <li><a href="about.asp">About</a></li>
+    <li><a href="about.asp">test</a></li>
 </ul>

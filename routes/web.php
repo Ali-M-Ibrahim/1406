@@ -93,3 +93,28 @@ Route::get('delete-product2/{id}',[ProductController::class,'delete'])->name('de
 
 Route::resource('category',CategoryController::class);
 Route::get('delete-category/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
+
+
+Route::get('page1test',function(){
+    return view('website.page1');
+});
+
+Route::get('page2test',function(){
+    return view('website.page2');
+});
+
+Route::get('template-index',function (){
+    return view('template.index');
+});
+Route::get('template-services',function (){
+    return view('template.services');
+});
+
+Route::get('template-blogs',function (){
+    return view('template.blog');
+});
+
+
+
+
+

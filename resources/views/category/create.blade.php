@@ -57,7 +57,10 @@
 <form action="{{route('category.store')}}" method="post" >
     @csrf
     <label for="name">Name</label>
-    <input required type="text" id="name" name="name" placeholder="Category name..">
+    <input  type="text" id="name" name="name" placeholder="Category name..">
+    @error('name')
+    <span style="color:red;">{{$message}}</span>
+    @enderror
 
     <input type="submit" value="Submit">
 

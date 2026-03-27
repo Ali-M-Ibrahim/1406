@@ -21,6 +21,12 @@ class ProductController extends Controller
     }
 
     public function save(Request $request){
+        $request->validate([
+            'body_name'=>'required|unique:products,name|string',
+            'body_description' => 'required|min:3|max:100',
+//            'body_price' => 'required|same:body_price2',
+            'body_price' => 'required|confirmed',
+        ]);
         $row = new Product();
         $row->name = $request->body_name;
         $row->description = $request->body_description;
