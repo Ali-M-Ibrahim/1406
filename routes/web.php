@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\FirstController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RController;
@@ -116,5 +117,8 @@ Route::get('template-blogs',function (){
 
 
 
-
-
+Route::get('list-images',[ImageController::class,'list'])->name('listImages');
+Route::get('upload-image',[ImageController::class,'index'])->name('addImage');
+Route::post('post-image',[ImageController::class,'store'])->name('store-image');
+Route::post('post-image2',[ImageController::class,'store2'])->name('store-image2');
+Route::post('post-image3',[ImageController::class,'store3'])->name('store-image3');

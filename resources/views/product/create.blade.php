@@ -57,24 +57,24 @@
 <form action="{{route('saveProduct')}}" method="post" >
     @csrf
     <label for="name">Name</label>
-    <input  type="text" id="name" name="body_name" placeholder="Product name..">
+    <input value="{{old('body_name')}}"  type="text" id="name" name="body_name" placeholder="Product name..">
     @error('body_name')
     <span>{{$message}}</span>
     @enderror
     <label for="description">Description</label>
-    <textarea  type="text" id="description" name="body_description" placeholder="Product Description.."></textarea>
+    <textarea  type="text" id="description" name="body_description" placeholder="Product Description..">{{old('body_description')}}</textarea>
     @error('body_description')
     <span>{{$message}}</span>
     @enderror
     <label for="price">Price</label>
-    <input  type="number" id="price" name="body_price" placeholder="Product Price" />
+    <input value="{{old('body_price')}}"  type="number" id="price" name="body_price" placeholder="Product Price" />
     @error('body_price')
     <span>{{$message}}</span>
     @enderror
 
     <label for="body_price_confirmation">Confirm Price</label>
 {{--    <input  type="number" id="price2" name="body_price2" placeholder="Product Price confirmation" />--}}
-        <input  type="number" id="price2" name="body_price_confirmation" placeholder="Product Price confirmation" />
+        <input value="{{old('body_price_confirmation')}}"  type="number" id="price2" name="body_price_confirmation" placeholder="Product Price confirmation" />
 
     @error('body_price_confirmation')
     <span>{{$message}}</span>
