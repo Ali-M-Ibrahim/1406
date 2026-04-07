@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\FirstController;
@@ -98,18 +99,13 @@ Route::get('delete-category/{id}',[CategoryController::class,'destroy'])->name('
 
 Route::get('page1test',function(){
     return view('website.page1');
-});
+})->name('page1')->middleware(['isConnected']);
 
 Route::get('page2test',function(){
     return view('website.page2');
-});
+})->middleware(['isConnected']);
 
-Route::get('template-index',function (){
-    return view('template.index');
-});
-Route::get('template-services',function (){
-    return view('template.services');
-});
+
 
 Route::get('template-blogs',function (){
     return view('template.blog');
@@ -122,3 +118,23 @@ Route::get('upload-image',[ImageController::class,'index'])->name('addImage');
 Route::post('post-image',[ImageController::class,'store'])->name('store-image');
 Route::post('post-image2',[ImageController::class,'store2'])->name('store-image2');
 Route::post('post-image3',[ImageController::class,'store3'])->name('store-image3');
+
+
+Route::get('register',[AuthController::class,'register'])->name('register');
+Route::post('doregister',[AuthController::class,'create'])->name('doregister');
+Route::get('login',[AuthController::class,'login'])->name('login');
+Route::post('dologin',[AuthController::class,'connect'])->name('dologin');
+Route::get('home',[AuthController::class,'home'])->name('home');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
+
+
+Route::middleware(['isConnected','isAdmin'])->group(function () {
+
+    Route::get('template-index',function (){
+        return view('template.index');
+    });
+    Route::get('template-services',function (){
+        return view('template.services');
+    });
+
+});

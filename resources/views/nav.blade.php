@@ -1,7 +1,8 @@
-<ul>
-    <li><a href="default.asp">Home</a></li>
-    <li><a href="news.asp">News</a></li>
-    <li><a href="contact.asp">Contact</a></li>
-    <li><a href="about.asp">About</a></li>
-    <li><a href="about.asp">test</a></li>
-</ul>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    @if(Auth::check())
+    <a href="#contact">Welcome {{Auth::user()->email}}</a>
+    <a href="{{route('logout')}}">Logout</a>
+    @endif
+</div>
